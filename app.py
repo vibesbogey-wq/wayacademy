@@ -451,4 +451,7 @@ def handle_webhook():
 # ---------------- Main ---------------- #
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    # Railway өөрийн PORT env өгдөг, тэрийг уншина. Байхгүй бол 5000-г default болгоно.
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
+
